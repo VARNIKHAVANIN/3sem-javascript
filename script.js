@@ -105,49 +105,7 @@ window.addEventListener("scroll", function () {
             "mailto:varnikhavani@gmail.com?subject=" +
             subject + "&body=" + body;
     });
-/* Initialize EmailJS */
-emailjs.init({
-    publicKey: "YOUR_PUBLIC_KEY"
-});
 
-/* Contact Form */
-const contactForm = document.getElementById("contact-form");
-
-if (contactForm) {
-    contactForm.addEventListener("submit", async function (event) {
-        event.preventDefault();
-
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const message = document.getElementById("message").value.trim();
-
-        if (!name || !email || !message) {
-            alert("Please fill in all fields.");
-            return;
-        }
-
-        try {
-            await emailjs.send(
-                "YOUR_SERVICE_ID",
-                "YOUR_TEMPLATE_ID",
-                {
-                    from_name: name,
-                    from_email: email,
-                    message: message,
-                    to_email: "varnikhavani@gmail.com"
-                }
-            );
-
-            alert("Message sent successfully!");
-            contactForm.reset();
-        } catch (error) {
-            console.error("Email error:", error);
-            alert("Message could not be sent. Please try again.");
-        }
-    });
-}
-
-}
 
 /* Automatic Copyright Year */
 const year = document.getElementById("year");
